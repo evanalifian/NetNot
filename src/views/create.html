@@ -1,0 +1,51 @@
+<%- include('./components/index-head.html') %>
+<div class="h-screen flex flex-col">
+  <header class="max-w-2xl mx-auto bg-slate-950 sticky top-0 w-full">
+    <div class="pt-12 pb-3 px-4 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-2xl font-bold tracking-wide">NetNote</span>
+        <a
+          href="/notes"
+          class="inline-flex items-center text-slate-300 transition-colors hover:text-slate-100"
+        >
+          <img src="/back.svg" alt="back icon" class="mr-2" /> Back
+        </a>
+      </div>
+    </div>
+  </header>
+  <form
+  action="/notes/add"
+    method="post"
+    class="flex flex-col gap-y-2 justify-between h-full pt-3 pb-4 px-4 overflow-y-scroll"
+  >
+    <input
+      type="text"
+      name="note_title"
+      id="note_title"
+      placeholder="Title"
+      class="text-2xl font-bold bg-slate-950 outline-none mb-4 border-b border-slate-800 pb-1"
+      required
+    />
+    <textarea
+      name="note_content"
+      id="note_content"
+      placeholder="Create note with markdown"
+      class="resize-none block w-full h-full bg-slate-950 outline-none"
+      required
+    ></textarea>
+    <div class="flex justify-between p-2 bg-slate-900 rounded-md">
+      <label for="is_important">
+        <input
+          type="checkbox"
+          name="is_important"
+          id="is_important"
+          class="indeterminate:bg-gray-300"
+          value="checked"
+        />
+        Set to important
+      </label>
+      <button>Create note</button>
+    </div>
+  </form>
+</div>
+<%- include('./components/index-footer.html') -%>

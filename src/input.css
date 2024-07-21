@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100;
+  }
+  .markdown_container h1,
+  .markdown_container h2,
+  .markdown_container h3,
+  .markdown_container h4,
+  .markdown_container h5,
+  .markdown_container h6,
+  .markdown_container dt {
+    @apply font-bold
+  }
+  .markdown_container h1 {
+    @apply text-2xl
+  }
+  .markdown_container h2 {
+    @apply text-xl
+  }
+  .markdown_container h3 {
+    @apply text-lg
+  }
+  .markdown_container h4 {
+    @apply text-base
+  }
+  .markdown_container h5 {
+    @apply text-sm
+  }
+  .markdown_container h6 {
+    @apply text-xs
+  }
+  .markdown_container a {
+    @apply text-blue-500 underline underline-offset-4 active:text-blue-400
+  }
+  .markdown_container blockquote {
+    @apply border-l-2 border-slate-500 p-2 ml-2
+  }
+  .markdown_container ol {
+    @apply list-decimal list-inside space-y-2
+  }
+  .markdown_container ul {
+    @apply list-disc list-inside space-y-2
+  }
+  .markdown_container ul.contains-task-list {
+    @apply list-none
+  }
+  .markdown_container dt {
+    @apply mb-1
+  }
+  .markdown_container dd {
+    @apply mb-2
+  }
+  .markdown_container mark {
+    @apply text-slate-100 bg-slate-700 px-1 py-0.5 rounded-md
+  }
+  .markdown_container code {
+    @apply block w-full bg-slate-900 p-4 rounded-md
+  }
+  .markdown_container table {
+    @apply w-full table-fixed border-collapse rounded-md border border-slate-700
+  }
+  .markdown_container table tr {
+    @apply even:bg-slate-900
+  }
+  .markdown_container table th,
+  .markdown_container table td {
+    @apply border border-slate-700 p-2 text-start
+  }
+}

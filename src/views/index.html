@@ -1,0 +1,53 @@
+<%- include('./components/index-head.html') -%>
+    <header class="max-w-2xl mx-auto bg-slate-950 sticky top-0 z-50">
+      <div class="pt-12 pb-3 px-4 space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-2xl font-bold tracking-wide">NetNote</span>
+          <a href="/notes/add" class="inline-flex items-center text-slate-300 transition-colors hover:text-slate-100">
+            <img src="/add.svg" alt="add icon"> New note
+          </a>
+        </div>
+        <div class="flex">
+          <img src="/filter.svg" alt="search icon" class="mr-2">
+          <ul class="flex gap-x-2 *:text-slate-300 *:font-medium *:rounded-md *:border *:border-slate-700 *:bg-slate-900 *:px-2 *:py-0.5">
+            <li>
+              <a href="/notes/?filter=all" class="inline-block w-full">All</a>
+            </li>
+            <li>
+              <a href="/notes/?filter=important" class="inline-block w-full">Important</a>
+            </li>
+          </ul>
+        </div>
+        <form action="">
+          <label for="search_note" class="block relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-2">
+              <img src="/search.svg" alt="filter icon">
+            </div>
+            <input type="text" name="search_note" id="search_note" placeholder="Search notes by title" class="block w-full bg-slate-800 text-slate-300 rounded-md py-2 pl-9 pr-3 placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-500">
+          </label>
+        </form>
+      </div>
+    </header>
+    <main class="max-w-2xl mx-auto pb-12 pt-3 px-4">
+      <ul
+        class="flex flex-col gap-y-4 *:overflow-hidden *:text-slate-900 *:font-medium *:rounded-lg *:bg-slate-200 *:p-2"
+      >
+        <% notes.forEach(function(note){ %>
+        <li>
+          <div class="min-h-36 max-h-52 overflow-y-hidden relative">
+            <a href="/notes/open/<%= note.note_title %>" class="block absolute top-0 right-0 bottom-0 left-0"></a>
+            <div class="flex items-center justify-between gap-x-4 mb-4">
+              <span class="text-xl font-bold truncate"><%= note.note_title %></span>
+              <% if (note.is_important) { %>
+                <span class="block text-white text-xs bg-red-600 py-0.5 px-2 rounded-md border border-red-400">Important</span>
+              <% } %>
+            </div>
+            <div class="space-y-5 markdown_container">
+              <%- md.render(note.note_content) %>
+            </div>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+    </main>
+<%- include('./components/index-footer.html') -%>
