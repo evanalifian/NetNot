@@ -12,8 +12,8 @@ const edit = (req, res) => {
 };
 
 const remove = (req, res) => {
-  const { note_title } = req.params
-  notesServices.remove(note_title);
+  const { title } = req.params
+  notesServices.remove(title);
   res.redirect("/notes");
 };
 
