@@ -5,8 +5,8 @@ const pageRouter = express.Router();
 
 // served page
 pageRouter.get("/", pageController.serveHomePage);
-pageRouter.get("/open/:note_title", pageController.serveContentPage);
+pageRouter.get("/open/:title", pageController.serveContentPage);
 pageRouter.get("/add", pageController.serveAddPage);
-pageRouter.get("/edit/:note_title", pageController.serveEditPage);
+pageRouter.get("/edit/:title", pageController.serveEditPage);
 
 export default pageRouter;

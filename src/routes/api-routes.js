@@ -5,6 +5,6 @@ const apiRouter = express.Router();
 
 apiRouter.post("/add", apiController.create);
 apiRouter.post("/edit", apiController.edit);
-apiRouter.get("/remove/:note_title", apiController.remove);
+apiRouter.get("/remove/:title", apiController.remove);
 
 export default apiRouter;
