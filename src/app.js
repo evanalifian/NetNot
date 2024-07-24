@@ -4,10 +4,19 @@ import path, { dirname } from "path";
 import ejs from "ejs";
 import pageRouter from "./routes/page-routes.js";
 import apiRouter from "./routes/api-routes.js";
+import os from "os";
+import fs from "fs";
 
+
+export const notesDir = `${os.homedir()}/netnote/notes/`
 export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = dirname(__filename);
 export const app = express();
+
+if (!fs.existsSync(`${os.homedir()}/netnote`)) {
+  fs.mkdirSync(`${os.homedir()}/netnote`);
+  fs.mkdirSync(`${os.homedir()}/netnote/notes/`);
+}
 
 app.use(express.urlencoded({ extended: false }));
 
@@ -20,8 +29,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "html");
 
 app.get("/", (req, res) => {
-  res.status(301).redirect("/notes")
-})
+  res.status(301).redirect("/notes");
+});
 
 app.use("/notes", pageRouter);
 app.use("/notes", apiRouter);
