@@ -32,18 +32,18 @@
       <ul
         class="flex flex-col gap-y-4 *:overflow-hidden *:text-slate-900 *:font-medium *:rounded-lg *:bg-slate-200 *:p-2"
       >
-        <% notes.forEach(function(note){ %>
+        <% contents.forEach(function(note){ %>
         <li>
           <div class="min-h-36 max-h-52 overflow-y-hidden relative">
-            <a href="/notes/open/<%= note.note_title %>" class="block absolute top-0 right-0 bottom-0 left-0"></a>
+            <a href="/notes/open/<%= note.title %>" class="block absolute top-0 right-0 bottom-0 left-0"></a>
             <div class="flex items-center justify-between gap-x-4 mb-4">
-              <span class="text-xl font-bold truncate"><%= note.note_title %></span>
+              <span class="text-xl font-bold truncate"><%= note.title %></span>
               <% if (note.is_important) { %>
                 <span class="block text-white text-xs bg-red-600 py-0.5 px-2 rounded-md border border-red-400">Important</span>
               <% } %>
             </div>
             <div class="space-y-5 markdown_container">
-              <%- md.render(note.note_content) %>
+              <%- note.content %>
             </div>
           </div>
         </li>
