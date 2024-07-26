@@ -10,8 +10,8 @@ import fs from "fs";
 const create = (formData) => {
   const result = loadJSONFile();
   const data = {
-    path: `${notesDir}${formData.is_important ? "important-" : ""}${formData.title}.md`,
-    title: formData.title,
+    path: `${notesDir}${formData.is_important ? "important-" : ""}${formData.title.trim()}.md`,
+    title: formData.title.trim(),
     content: formData.content,
     is_important: formData.is_important ? formData.is_important : null,
   }
@@ -43,10 +43,13 @@ const edit = (formData) => {
 const remove = (title) => {
   const result = loadJSONFile();
   const filteredNote = result.filter((n) => {
+    return n.title == title
+  });
+  const filteredNewNote = result.filter((n) => {
     return n.title != title
   });
-  fs.unlinkSync(`${notesDir}${title}.md`);
-  writeJSONFile(filteredNote);
+  fs.unlinkSync(filteredNote[0].path);
+  writeJSONFile(filteredNewNote);
 };
 
 export default {
